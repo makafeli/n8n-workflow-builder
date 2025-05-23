@@ -64,12 +64,12 @@ For testing purposes and to get the server online, use the build and start comma
 
 ### 5. Additional Configuration
 
-Server configuration is managed via the `cline_mcp_settings.json` file. Ensure that the following environment variables are correctly set:
+Server configuration is managed via the `client_mcp_settings.json` file. Ensure that the following environment variables are correctly set:
 
 - `N8N_HOST`: Your n8n API host URL.
 - `N8N_API_KEY`: Your n8n API key.
 
-Example configuration in `cline_mcp_settings.json`:
+Example configuration in `client_mcp_settings.json`:
 
 ```json
 {
@@ -134,7 +134,7 @@ The server also provides the following resources for more efficient context acce
   ```bash
   npm run clean && npm run build
   ```
-- Verify that your environment variables in `cline_mcp_settings.json` are correct.
+- Verify that your environment variables in `client_mcp_settings.json` are correct.
 
 ## Future Enhancements
 
