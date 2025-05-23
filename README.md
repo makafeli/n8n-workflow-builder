@@ -64,7 +64,7 @@ For testing purposes and to get the server online, use the build and start comma
 
 ### 5. Additional Configuration
 
-Server configuration is managed via the `cline_mcp_settings.json` file. Ensure that the following environment variables are correctly set:
+Server configuration for [Cline](https://cline.bot) is managed via the `cline_mcp_settings.json` file. Ensure that the following environment variables are correctly set:
 
 - `N8N_HOST`: Your n8n API host URL.
 - `N8N_API_KEY`: Your n8n API key.
