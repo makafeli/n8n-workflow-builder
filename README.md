@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/makafeli-n8n-workflow-builder-badge.png)](https://mseep.ai/app/makafeli-n8n-workflow-builder)
+
 # n8n Workflow Builder MCP Server
 
 This project provides an MCP server for managing n8n workflows. It offers functionality to list, create, update, delete, activate, and deactivate workflows through a set of defined tools.
