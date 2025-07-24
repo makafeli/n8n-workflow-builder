@@ -1,0 +1,45 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Environment variables
+.env
+.env.test
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build files
+/build
+/dist
+
+# Test files and directory (excluding from version control)
+/tests/
+tests/
+*.test.js
+test-*.js
+
+# Logs
+logs
+*.log
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+jest.config.js
+internal-readme.md
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
