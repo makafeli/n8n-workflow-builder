@@ -2,25 +2,19 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "CommonJS",
-    "moduleResolution": "node",
-    "outDir": "./build",
     "rootDir": "./src",
+    "outDir": "./build",
     "strict": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "types": ["node"]
+    "baseUrl": ".",
+    "paths": {
+      "@modelcontextprotocol/sdk": ["src/types/sdk.d.ts"],
+      "@modelcontextprotocol/sdk/stdio": ["src/types/sdk.d.ts"],
+      "@modelcontextprotocol/sdk/types": ["src/types/sdk.d.ts"]
+    }
   },
   "include": [
     "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "build",
-    "tests"
   ]
 }
