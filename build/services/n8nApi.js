@@ -47,3 +47,4 @@ async function listWorkflows() {
     const response = await api.get('/');
     return response.data;
 }
+//# sourceMappingURL=n8nApi.js.map

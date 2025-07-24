@@ -4,3 +4,4 @@ exports.calculateNextPosition = calculateNextPosition;
 function calculateNextPosition(current) {
     return { x: current.x + 200, y: current.y };
 }
+//# sourceMappingURL=positioning.js.map
