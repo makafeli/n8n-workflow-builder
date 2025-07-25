@@ -88,10 +88,24 @@ jobs:
     name: Publish to NPM
     runs-on: ubuntu-latest
     needs: [test, build]
-    if: github.event_name == 'release' && github.event.action == 'published'
+    if: (github.event_name == 'release' && github.event.action == 'published') || github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Determine trigger context
+        run: |
+          echo "🔍 Workflow Trigger Information:"
+          echo "Event: ${{ github.event_name }}"
+          if [ "${{ github.event_name }}" = "release" ]; then
+            echo "Release Action: ${{ github.event.action }}"
+            echo "Release Tag: ${{ github.event.release.tag_name }}"
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Manual Trigger: workflow_dispatch"
+            echo "Input Version: ${{ github.event.inputs.version }}"
+          fi
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref_name }}"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -108,14 +122,54 @@ jobs:
 
       - name: Verify package contents
         run: |
+          echo "📦 Verifying package contents..."
           npm pack --dry-run
-          echo "Package contents:"
+          echo ""
+          echo "📋 Package contents preview:"
           tar -tzf $(npm pack --silent) | head -20
+          echo ""
+          echo "📊 Package info:"
+          npm pack --dry-run | grep -E "(package size|unpacked size|total files)"
 
-      - name: Publish to NPM
-        run: npm publish
+      - name: Verify NPM authentication
+        run: |
+          echo "🔐 Verifying NPM authentication..."
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "❌ NPM_TOKEN is not set!"
+            exit 1
+          else
+            echo "✅ NPM_TOKEN is configured"
+            echo "🔍 Token length: ${#NODE_AUTH_TOKEN} characters"
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to NPM
+        run: |
+          echo "🚀 Publishing @makafeli/n8n-workflow-builder@$(node -p "require('./package.json').version") to npm..."
+          npm publish --verbose
+          echo "✅ Package published successfully!"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Verify package is published
+        run: |
+          echo "🔍 Verifying package is available on npm registry..."
+          PACKAGE_NAME="@makafeli/n8n-workflow-builder"
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+
+          # Wait a moment for npm registry to update
+          sleep 10
+
+          # Check if package is available
+          if npm view $PACKAGE_NAME@$PACKAGE_VERSION version > /dev/null 2>&1; then
+            echo "✅ Package $PACKAGE_NAME@$PACKAGE_VERSION is available on npm registry!"
+            echo "📦 Install with: npm install $PACKAGE_NAME"
+            echo "🔗 View at: https://www.npmjs.com/package/$PACKAGE_NAME"
+          else
+            echo "⚠️ Package may still be propagating to npm registry..."
+            echo "🔄 Check again in a few minutes at: https://www.npmjs.com/package/$PACKAGE_NAME"
+          fi
 
       - name: Create deployment summary
         run: |
