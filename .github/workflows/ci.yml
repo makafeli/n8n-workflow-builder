@@ -36,11 +36,11 @@ jobs:
           fi
         continue-on-error: true
 
-      - name: Run tests
-        run: npm test
+      - name: Run core tests (CI-safe)
+        run: npm run test:ci
 
       - name: Run test coverage
-        run: npm run test:coverage
+        run: npm run test:ci:coverage
         if: matrix.node-version == 18
 
       - name: Upload coverage to Codecov

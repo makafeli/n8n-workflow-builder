@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="n8n-workflow-builder CI Tests" tests="31" failures="0" errors="0" time="2.053">
+  <testsuite name="Execution Management Integration Tests" errors="0" failures="0" skipped="0" timestamp="2025-07-25T18:10:59" time="1.392" tests="10">
+    <testcase classname="Execution Management Integration Tests list_executions should list all executions successfully" name="Execution Management Integration Tests list_executions should list all executions successfully" time="0.007">
+    </testcase>
+    <testcase classname="Execution Management Integration Tests list_executions should support filtering by workflow ID" name="Execution Management Integration Tests list_executions should support filtering by workflow ID" time="0.001">
+    </testcase>
+    <testcase classname="Execution Management Integration Tests list_executions should support status filtering" name="Execution Management Integration Tests list_executions should support status filtering" time="0">
+    </testcase>
+    <testcase classname="Execution Management Integration Tests list_executions should support pagination" name="Execution Management Integration Tests list_executions should support pagination" time="0">
+    </testcase>
+    <testcase classname="Execution Management Integration Tests get_execution should retrieve execution by ID" name="Execution Management Integration Tests get_execution should retrieve execution by ID" time="0.001">
+    </testcase>
+    <testcase classname="Execution Management Integration Tests get_execution should support including execution data" name="Execution Management Integration Tests get_execution should support including execution data" time="0">
+    </testcase>
+    <testcase classname="Execution Management Integration Tests get_execution should require execution ID" name="Execution Management Integration Tests get_execution should require execution ID" time="0">
+    </testcase>
+    <testcase classname="Execution Management Integration Tests get_execution should handle not found errors" name="Execution Management Integration Tests get_execution should handle not found errors" time="0.001">
+    </testcase>
+    <testcase classname="Execution Management Integration Tests delete_execution should delete execution successfully" name="Execution Management Integration Tests delete_execution should delete execution successfully" time="0">
+    </testcase>
+    <testcase classname="Execution Management Integration Tests delete_execution should require execution ID" name="Execution Management Integration Tests delete_execution should require execution ID" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="MCP Resources Integration Tests" errors="0" failures="0" skipped="0" timestamp="2025-07-25T18:10:59" time="1.422" tests="8">
+    <testcase classname="MCP Resources Integration Tests Resource Templates should list available resource templates" name="MCP Resources Integration Tests Resource Templates should list available resource templates" time="0.007">
+    </testcase>
+    <testcase classname="MCP Resources Integration Tests Static Resources should read /workflows resource" name="MCP Resources Integration Tests Static Resources should read /workflows resource" time="0.001">
+    </testcase>
+    <testcase classname="MCP Resources Integration Tests Static Resources should read /execution-stats resource" name="MCP Resources Integration Tests Static Resources should read /execution-stats resource" time="0.001">
+    </testcase>
+    <testcase classname="MCP Resources Integration Tests Static Resources should handle execution stats API errors gracefully" name="MCP Resources Integration Tests Static Resources should handle execution stats API errors gracefully" time="0">
+    </testcase>
+    <testcase classname="MCP Resources Integration Tests Dynamic Resources should read workflow by ID resource" name="MCP Resources Integration Tests Dynamic Resources should read workflow by ID resource" time="0.001">
+    </testcase>
+    <testcase classname="MCP Resources Integration Tests Dynamic Resources should read execution by ID resource" name="MCP Resources Integration Tests Dynamic Resources should read execution by ID resource" time="0">
+    </testcase>
+    <testcase classname="MCP Resources Integration Tests Dynamic Resources should handle not found resources" name="MCP Resources Integration Tests Dynamic Resources should handle not found resources" time="0.029">
+    </testcase>
+    <testcase classname="MCP Resources Integration Tests Resource Listing should list all available resources" name="MCP Resources Integration Tests Resource Listing should list all available resources" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="End-to-End Workflow Tests" errors="0" failures="0" skipped="0" timestamp="2025-07-25T18:11:00" time="0.211" tests="2">
+    <testcase classname="End-to-End Workflow Tests should complete full workflow lifecycle: create → activate → list → get → deactivate → delete" name="End-to-End Workflow Tests should complete full workflow lifecycle: create → activate → list → get → deactivate → delete" time="0.001">
+    </testcase>
+    <testcase classname="End-to-End Workflow Tests should handle workflow execution flow" name="End-to-End Workflow Tests should handle workflow execution flow" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="Error Handling Integration Tests" errors="0" failures="0" skipped="0" timestamp="2025-07-25T18:11:00" time="0.221" tests="11">
+    <testcase classname="Error Handling Integration Tests Network and API Errors should handle network connection errors" name="Error Handling Integration Tests Network and API Errors should handle network connection errors" time="0.001">
+    </testcase>
+    <testcase classname="Error Handling Integration Tests Network and API Errors should handle n8n API authentication errors" name="Error Handling Integration Tests Network and API Errors should handle n8n API authentication errors" time="0">
+    </testcase>
+    <testcase classname="Error Handling Integration Tests Network and API Errors should handle n8n API rate limiting" name="Error Handling Integration Tests Network and API Errors should handle n8n API rate limiting" time="0">
+    </testcase>
+    <testcase classname="Error Handling Integration Tests Network and API Errors should handle n8n server errors" name="Error Handling Integration Tests Network and API Errors should handle n8n server errors" time="0">
+    </testcase>
+    <testcase classname="Error Handling Integration Tests Invalid Parameters should validate missing required parameters" name="Error Handling Integration Tests Invalid Parameters should validate missing required parameters" time="0">
+    </testcase>
+    <testcase classname="Error Handling Integration Tests Invalid Parameters should validate invalid workflow data structure" name="Error Handling Integration Tests Invalid Parameters should validate invalid workflow data structure" time="0.001">
+    </testcase>
+    <testcase classname="Error Handling Integration Tests Invalid Parameters should handle invalid execution filters" name="Error Handling Integration Tests Invalid Parameters should handle invalid execution filters" time="0">
+    </testcase>
+    <testcase classname="Error Handling Integration Tests Resource Access Errors should handle invalid resource URIs" name="Error Handling Integration Tests Resource Access Errors should handle invalid resource URIs" time="0.012">
+    </testcase>
+    <testcase classname="Error Handling Integration Tests Resource Access Errors should handle resource not found errors" name="Error Handling Integration Tests Resource Access Errors should handle resource not found errors" time="0.001">
+    </testcase>
+    <testcase classname="Error Handling Integration Tests Tool Not Found should handle calls to non-existent tools" name="Error Handling Integration Tests Tool Not Found should handle calls to non-existent tools" time="0">
+    </testcase>
+    <testcase classname="Error Handling Integration Tests MCP Server Connection Errors should handle server startup failures gracefully" name="Error Handling Integration Tests MCP Server Connection Errors should handle server startup failures gracefully" time="0.001">
+    </testcase>
+  </testsuite>
+</testsuites>
