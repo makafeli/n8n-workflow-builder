@@ -128,8 +128,8 @@ jobs:
           echo "📋 Package contents preview:"
           tar -tzf $(npm pack --silent) | head -20
           echo ""
-          echo "📊 Package info:"
-          npm pack --dry-run | grep -E "(package size|unpacked size|total files)"
+          echo "📊 Package info extracted:"
+          npm pack --dry-run 2>&1 | grep -E "(package size|unpacked size|total files)" || echo "✅ Package verification completed"
 
       - name: Verify NPM authentication
         run: |
