@@ -1,0 +1,170 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., 0.10.1)'
+        required: true
+        type: string
+      prerelease:
+        description: 'Mark as pre-release'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  create-release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Validate version format
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          if [[ ! $VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9.-]+)?$ ]]; then
+            echo "❌ Invalid version format: $VERSION"
+            echo "Expected format: X.Y.Z or X.Y.Z-prerelease"
+            exit 1
+          fi
+          echo "✅ Version format is valid: $VERSION"
+
+      - name: Check if version matches package.json
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          INPUT_VERSION="${{ github.event.inputs.version }}"
+          
+          if [ "$PACKAGE_VERSION" != "$INPUT_VERSION" ]; then
+            echo "❌ Version mismatch!"
+            echo "package.json version: $PACKAGE_VERSION"
+            echo "Input version: $INPUT_VERSION"
+            echo "Please update package.json version to match the release version."
+            exit 1
+          fi
+          echo "✅ Version matches package.json: $PACKAGE_VERSION"
+
+      - name: Install dependencies and run tests
+        run: |
+          npm ci
+          npm test
+          npm run build
+
+      - name: Generate release notes
+        id: release_notes
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          
+          # Get the latest tag for comparison
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          
+          cat > release_notes.md << 'EOF'
+          # 🚀 n8n-workflow-builder v${{ github.event.inputs.version }}
+          
+          ## 🎯 What's New in v${{ github.event.inputs.version }}
+          
+          ### ⚡ Major Upgrades
+          - **MCP SDK 1.17.0 Compatibility**: Fully upgraded to the latest Model Context Protocol SDK
+          - **TypeScript 5.7.3**: Latest TypeScript with enhanced type safety and performance
+          - **Modern Jest Testing**: Comprehensive test suite with ts-jest integration
+          
+          ### 🛠️ New MCP Tools (23 Total)
+          - `execute_workflow` - Execute n8n workflows programmatically
+          - `create_workflow_and_activate` - Create and immediately activate workflows
+          - `generate_audit` - Generate comprehensive security audit reports
+          - **Credential Management**: `create_credential`, `get_credential_schema`, `delete_credential`
+          - **Tag Management**: `list_tags`, `create_tag`, `get_tag`, `update_tag`, `delete_tag`, `get_workflow_tags`, `update_workflow_tags`
+          
+          ### 🧪 Testing Excellence
+          - **78 Comprehensive Tests** covering all 23 MCP tools
+          - **7 Test Suites** with integration and unit testing
+          - **Mock Client Framework** for reliable testing
+          - **Error Handling Tests** for robust error scenarios
+          - **TypeScript Strict Mode** with full type safety
+          
+          ### 🏗️ Repository Modernization
+          - **Clean Git History**: Removed accidentally committed `node_modules`
+          - **Comprehensive .gitignore**: Node.js best practices implementation
+          - **GitHub Actions CI/CD**: Automated testing and npm publishing
+          - **Package Optimization**: Proper npm package configuration
+          
+          ### 📦 Installation & Usage
+          
+          ```bash
+          # Install via npm
+          npm install @makafeli/n8n-workflow-builder
+          
+          # Use as MCP server
+          npx @makafeli/n8n-workflow-builder
+          ```
+          
+          ### 🔧 Technical Specifications
+          - **Node.js**: >=18.0.0
+          - **MCP SDK**: ^1.17.0
+          - **TypeScript**: ^5.7.3
+          - **Testing**: Jest with ts-jest
+          - **Package Size**: Optimized for production
+          
+          ### 🐛 Bug Fixes & Improvements
+          - Fixed TypeScript configuration issues
+          - Resolved MCP SDK compatibility problems
+          - Enhanced error handling and validation
+          - Improved test reliability and coverage
+          - Optimized build process and package size
+          
+          ### 📚 Documentation
+          - Updated README with latest features
+          - Comprehensive API documentation
+          - Testing guidelines and examples
+          - Contributing guidelines
+          
+          ---
+          
+          **Full Changelog**: https://github.com/makafeli/n8n-workflow-builder/compare/v0.9.0...v${{ github.event.inputs.version }}
+          
+          **NPM Package**: https://www.npmjs.com/package/@makafeli/n8n-workflow-builder
+          EOF
+          
+          echo "release_notes_file=release_notes.md" >> $GITHUB_OUTPUT
+
+      - name: Create Git tag
+        run: |
+          VERSION="v${{ github.event.inputs.version }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "$VERSION" -m "Release $VERSION"
+          git push origin "$VERSION"
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.event.inputs.version }}
+          release_name: n8n-workflow-builder v${{ github.event.inputs.version }}
+          body_path: release_notes.md
+          draft: false
+          prerelease: ${{ github.event.inputs.prerelease }}
+
+      - name: Create release summary
+        run: |
+          echo "## 🎉 Release Created Successfully!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** v${{ github.event.inputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Tag:** v${{ github.event.inputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Pre-release:** ${{ github.event.inputs.prerelease }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📦 Next Steps" >> $GITHUB_STEP_SUMMARY
+          echo "1. The release will automatically trigger npm publishing" >> $GITHUB_STEP_SUMMARY
+          echo "2. Package will be available at: https://www.npmjs.com/package/@makafeli/n8n-workflow-builder" >> $GITHUB_STEP_SUMMARY
+          echo "3. Installation: \`npm install @makafeli/n8n-workflow-builder\`" >> $GITHUB_STEP_SUMMARY
