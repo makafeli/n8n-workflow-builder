@@ -57,8 +57,8 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
       workflow: z.object({
         name: z.string().describe("Name of the workflow"),
         nodes: z.array(z.any()).describe("Array of workflow nodes"),
-        connections: z.record(z.any()).describe("Node connections").optional(),
-        settings: z.record(z.any()).describe("Workflow settings").optional(),
+        connections: z.record(z.string(), z.any()).describe("Node connections").optional(),
+        settings: z.record(z.string(), z.any()).describe("Workflow settings").optional(),
         tags: z.array(z.string()).describe("Workflow tags").optional()
       }).describe("Workflow configuration")
     },
@@ -145,8 +145,8 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
       workflow: z.object({
         name: z.string().describe("Name of the workflow").optional(),
         nodes: z.array(z.any()).describe("Array of workflow nodes").optional(),
-        connections: z.record(z.any()).describe("Node connections").optional(),
-        settings: z.record(z.any()).describe("Workflow settings").optional(),
+        connections: z.record(z.string(), z.any()).describe("Node connections").optional(),
+        settings: z.record(z.string(), z.any()).describe("Workflow settings").optional(),
         tags: z.array(z.string()).describe("Workflow tags").optional()
       }).describe("Updated workflow configuration")
     },
