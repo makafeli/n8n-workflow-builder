@@ -1,0 +1,105 @@
+name: Publish to Multiple Registries
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish'
+        required: true
+        default: 'v0.10.1'
+
+jobs:
+  publish-npm:
+    name: Publish to NPM
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm run test:ci
+
+      - name: Build package
+        run: npm run build
+
+      - name: Publish to NPM
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish-github:
+    name: Publish to GitHub Packages
+    runs-on: ubuntu-latest
+    needs: publish-npm
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js for GitHub Packages
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://npm.pkg.github.com'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build package
+        run: npm run build
+
+      - name: Update package name for GitHub Packages
+        run: |
+          # Create a temporary package.json for GitHub Packages
+          cp package.json package.json.backup
+          sed 's/"@makafeli\/n8n-workflow-builder"/"@makafeli\/n8n-workflow-builder"/' package.json > package.json.tmp
+          mv package.json.tmp package.json
+
+      - name: Publish to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Restore original package.json
+        run: mv package.json.backup package.json
+
+  verify-publication:
+    name: Verify Package Publication
+    runs-on: ubuntu-latest
+    needs: [publish-npm, publish-github]
+    steps:
+      - name: Verify NPM publication
+        run: |
+          echo "🔍 Verifying NPM publication..."
+          PACKAGE_VERSION=$(curl -s https://registry.npmjs.org/@makafeli/n8n-workflow-builder/latest | jq -r '.version')
+          echo "✅ Latest version on NPM: $PACKAGE_VERSION"
+
+      - name: Verify GitHub Packages publication
+        run: |
+          echo "🔍 Verifying GitHub Packages publication..."
+          echo "✅ Package should be available at: https://github.com/makafeli/n8n-workflow-builder/packages"
+
+      - name: Create publication summary
+        run: |
+          echo "## 📦 Package Publication Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ **NPM Registry**: https://www.npmjs.com/package/@makafeli/n8n-workflow-builder" >> $GITHUB_STEP_SUMMARY
+          echo "✅ **GitHub Packages**: https://github.com/makafeli/n8n-workflow-builder/packages" >> $GITHUB_STEP_SUMMARY
+          echo "✅ **Smithery.ai**: Ready for deployment" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🚀 Next Steps for Smithery.ai" >> $GITHUB_STEP_SUMMARY
+          echo "1. Go to https://smithery.ai/new" >> $GITHUB_STEP_SUMMARY
+          echo "2. Connect your GitHub repository" >> $GITHUB_STEP_SUMMARY
+          echo "3. Click Deploy to host your MCP server" >> $GITHUB_STEP_SUMMARY

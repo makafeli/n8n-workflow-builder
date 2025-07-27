@@ -1,6 +1,7 @@
+runtime: "typescript"
 name: n8n-workflow-builder
 displayName: n8n Workflow Builder
-description: An MCP server for programmatically creating and managing n8n workflows.
+description: An MCP server for programmatically creating and managing n8n workflows with comprehensive API access.
 category: productivity
 publisher: makafeli
 repository: https://github.com/makafeli/n8n-workflow-builder
@@ -10,12 +11,30 @@ keywords:
   - workflow
   - automation
   - mcp
-  - model context protocol
+  - model-context-protocol
   - server
   - api
+  - productivity
+  - integration
+startCommand:
+  type: "http"
+  configSchema:
+    type: "object"
+    properties:
+      n8nHost:
+        type: "string"
+        description: "n8n instance URL (e.g., http://localhost:5678)"
+        default: "http://localhost:5678"
+      n8nApiKey:
+        type: "string"
+        description: "n8n API key for authentication"
+    required: ["n8nHost", "n8nApiKey"]
+  exampleConfig:
+    n8nHost: "http://localhost:5678"
+    n8nApiKey: "your-n8n-api-key-here"
 install:
   - npx:
       package: "@makafeli/n8n-workflow-builder"
       command: n8n-workflow-builder
       args: []
-      env:{}
+      env: {}

@@ -38,11 +38,22 @@ Perfect for teams using n8n who want to leverage AI assistants for workflow auto
 - **n8n instance** (self-hosted or cloud)
 - **n8n API key** with appropriate permissions
 
-## 🚀 Installation
+## 🚀 Installation & Usage
 
-### Method 1: NPX (Recommended)
+### Method 1: Smithery.ai (Hosted - Recommended)
 
-The fastest way to get started:
+Use the hosted version on Smithery.ai - no installation required:
+
+1. **Visit**: [smithery.ai](https://smithery.ai)
+2. **Search**: "n8n-workflow-builder"
+3. **Connect**: Configure with your n8n host and API key
+4. **Use**: Access from any MCP-compatible AI assistant
+
+**Benefits**: No local setup, automatic updates, professional hosting, tool playground.
+
+### Method 2: NPX (Local)
+
+Run locally with NPX:
 
 ```bash
 npx @makafeli/n8n-workflow-builder
