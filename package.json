@@ -2,18 +2,19 @@
   "name": "@makafeli/n8n-workflow-builder",
   "version": "0.10.1",
   "description": "Model Context Protocol server for n8n workflow management",
-  "main": "build/server.js",
+  "main": "build/server.cjs",
   "module": "./src/index.ts",
   "type": "module",
   "exports": {
     ".": {
       "import": "./src/index.ts",
-      "require": "./build/server.js"
+      "require": "./build/server.cjs"
     }
   },
   "scripts": {
     "clean": "rm -rf build build-smithery",
-    "build": "tsc",
+    "build": "tsc && npm run build:rename",
+    "build:rename": "find build -name '*.js' -exec sh -c 'mv \"$1\" \"${1%.js}.cjs\"' _ {} \\;",
     "build:smithery": "tsc -p tsconfig.smithery.json",
     "dev": "tsc -w",
     "start": "node build/server.js",
@@ -29,7 +30,7 @@
     "test:mock-errors": "jest --testPathPattern='credentials.test.ts|tags.test.ts|newWorkflowTools.test.ts'"
   },
   "bin": {
-    "n8n-workflow-builder": "build/server.js"
+    "n8n-workflow-builder": "build/server.cjs"
   },
   "files": [
     "build/**/*",
