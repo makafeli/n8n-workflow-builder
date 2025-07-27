@@ -23,8 +23,8 @@
     "test:coverage": "jest --coverage",
     "test:integration": "jest --testPathPattern=integration",
     "test:unit": "jest --testPathPattern=unit",
-    "test:ci": "jest --config=jest.config.ci.js",
-    "test:ci:coverage": "jest --config=jest.config.ci.js --coverage",
+    "test:ci": "jest --config=jest.config.ci.cjs",
+    "test:ci:coverage": "jest --config=jest.config.ci.cjs --coverage",
     "test:core": "jest --testPathIgnorePatterns='credentials.test.ts|tags.test.ts|newWorkflowTools.test.ts'",
     "test:mock-errors": "jest --testPathPattern='credentials.test.ts|tags.test.ts|newWorkflowTools.test.ts'"
   },
