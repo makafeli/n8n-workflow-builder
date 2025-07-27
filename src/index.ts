@@ -27,7 +27,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
   // Register workflow management tools using modern MCP SDK 1.17.0 API
   server.tool(
     "list_workflows",
-    "List all workflows from n8n instance",
+    "List all workflows from your n8n instance. Returns a comprehensive list of all workflows with their IDs, names, status (active/inactive), creation dates, and basic metadata. Perfect for getting an overview of your automation landscape.",
     {},
     async () => {
       try {
@@ -52,7 +52,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
 
   server.tool(
     "create_workflow",
-    "Create a new workflow in n8n",
+    "Create a new workflow in n8n with custom nodes, connections, and settings. Build complex automation workflows programmatically by defining nodes (triggers, actions, conditions) and their relationships. Supports all n8n node types and advanced workflow configurations.",
     {
       workflow: z.object({
         name: z.string().describe("Name of the workflow"),
@@ -85,7 +85,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
 
   server.tool(
     "get_workflow",
-    "Get a workflow by ID",
+    "Retrieve detailed information about a specific workflow by its ID. Returns complete workflow configuration including all nodes, connections, settings, triggers, and metadata. Essential for inspecting workflow structure before making modifications.",
     {
       id: z.string().describe("Workflow ID")
     },
@@ -112,7 +112,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
 
   server.tool(
     "execute_workflow",
-    "Execute a workflow by ID",
+    "Trigger immediate execution of a workflow by its ID. Starts the workflow manually regardless of its normal triggers (webhooks, schedules, etc.). Returns execution details including status, start time, and any immediate results or errors.",
     {
       id: z.string().describe("Workflow ID")
     },
@@ -139,7 +139,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
 
   server.tool(
     "update_workflow",
-    "Update an existing workflow by ID",
+    "Modify an existing workflow by updating its configuration, nodes, connections, or settings. Supports partial updates - you can change specific aspects without affecting the entire workflow. Perfect for iterative workflow development and maintenance.",
     {
       id: z.string().describe("Workflow ID"),
       workflow: z.object({
@@ -173,7 +173,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
 
   server.tool(
     "activate_workflow",
-    "Activate a workflow by ID",
+    "Enable a workflow to start processing triggers and executing automatically. Once activated, the workflow will respond to its configured triggers (webhooks, schedules, file changes, etc.) and run according to its automation logic.",
     {
       id: z.string().describe("Workflow ID")
     },
@@ -200,7 +200,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
 
   server.tool(
     "deactivate_workflow",
-    "Deactivate a workflow by ID",
+    "Disable a workflow to stop it from processing triggers and executing automatically. The workflow will remain in your n8n instance but won't respond to triggers until reactivated. Useful for maintenance, debugging, or temporary suspension.",
     {
       id: z.string().describe("Workflow ID")
     },
@@ -227,7 +227,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
 
   server.tool(
     "delete_workflow",
-    "Delete a workflow by ID",
+    "Permanently remove a workflow from your n8n instance. This action cannot be undone - the workflow, its configuration, nodes, and execution history will be completely deleted. Use with caution for cleanup and workflow lifecycle management.",
     {
       id: z.string().describe("Workflow ID")
     },
