@@ -1,4 +1,7 @@
 runtime: "typescript"
+build:
+  buildCommand: "npm run build:smithery"
+  entryPoint: "./build-smithery/index.js"
 name: n8n-workflow-builder
 displayName: n8n Workflow Builder
 description: An MCP server for programmatically creating and managing n8n workflows with comprehensive API access.

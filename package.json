@@ -3,9 +3,18 @@
   "version": "0.10.1",
   "description": "Model Context Protocol server for n8n workflow management",
   "main": "build/server.js",
+  "module": "./src/index.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./build/server.js"
+    }
+  },
   "scripts": {
-    "clean": "rm -rf build",
+    "clean": "rm -rf build build-smithery",
     "build": "tsc",
+    "build:smithery": "tsc -p tsconfig.smithery.json",
     "dev": "tsc -w",
     "start": "node build/server.js",
     "prepare": "npm run build",
