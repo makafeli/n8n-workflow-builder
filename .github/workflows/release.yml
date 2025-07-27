@@ -75,7 +75,7 @@ jobs:
       - name: Verify build output
         run: |
           ls -la build/
-          node -e "console.log('Build verification:', require('./build/server.js') ? 'SUCCESS' : 'FAILED')"
+          node -e "console.log('Build verification:', require('./build/server.cjs') ? 'SUCCESS' : 'FAILED')"
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4

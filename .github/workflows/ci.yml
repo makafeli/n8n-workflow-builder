@@ -80,7 +80,7 @@ jobs:
           echo "Verifying main entry point..."
           node -e "
             try {
-              require('./build/server.js');
+              require('./build/server.cjs');
               console.log('✅ Build verification: SUCCESS');
             } catch (error) {
               console.error('❌ Build verification: FAILED');
