@@ -1,6 +1,10 @@
 # n8n Workflow Builder MCP Server
 
 <div align="center">
+  <a href="https://smithery.ai/server/@makafeli/n8n-workflow-builder">
+    <img src="https://smithery.ai/badge/@makafeli/n8n-workflow-builder" alt="Smithery Server Badge" />
+  </a>
+  <br />
   <a href="https://glama.ai/mcp/servers/fhoynrlnpp">
     <img width="380" height="200" src="https://glama.ai/mcp/servers/fhoynrlnpp/badge" alt="n8n Workflow Builder Server MCP server" />
   </a>
