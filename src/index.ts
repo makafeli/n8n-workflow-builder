@@ -21,7 +21,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
   // Create MCP server with modern SDK 1.17.0 API
   const server = new McpServer({
     name: "n8n-workflow-builder",
-    version: "0.10.2"
+    version: "0.10.3"
   });
 
   // Register workflow management tools using modern MCP SDK 1.17.0 API
@@ -31,7 +31,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
     {},
     async () => {
       try {
-        const response = await n8nApi.get('/api/v1/workflows');
+        const response = await n8nApi.get('/workflows');
         return {
           content: [{
             type: "text",
@@ -64,7 +64,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
     },
     async ({ workflow }) => {
       try {
-        const response = await n8nApi.post('/api/v1/workflows', workflow);
+        const response = await n8nApi.post('/workflows', workflow);
         return {
           content: [{
             type: "text",
@@ -91,7 +91,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
     },
     async ({ id }) => {
       try {
-        const response = await n8nApi.get(`/api/v1/workflows/${id}`);
+        const response = await n8nApi.get(`/workflows/${id}`);
         return {
           content: [{
             type: "text",
@@ -118,7 +118,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
     },
     async ({ id }) => {
       try {
-        const response = await n8nApi.post(`/api/v1/workflows/${id}/execute`);
+        const response = await n8nApi.post(`/workflows/${id}/execute`);
         return {
           content: [{
             type: "text",
@@ -152,7 +152,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
     },
     async ({ id, workflow }) => {
       try {
-        const response = await n8nApi.put(`/api/v1/workflows/${id}`, workflow);
+        const response = await n8nApi.put(`/workflows/${id}`, workflow);
         return {
           content: [{
             type: "text",
@@ -179,7 +179,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
     },
     async ({ id }) => {
       try {
-        const response = await n8nApi.patch(`/api/v1/workflows/${id}/activate`);
+        const response = await n8nApi.patch(`/workflows/${id}/activate`);
         return {
           content: [{
             type: "text",
@@ -206,7 +206,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
     },
     async ({ id }) => {
       try {
-        const response = await n8nApi.patch(`/api/v1/workflows/${id}/deactivate`);
+        const response = await n8nApi.patch(`/workflows/${id}/deactivate`);
         return {
           content: [{
             type: "text",
@@ -233,7 +233,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
     },
     async ({ id }) => {
       try {
-        const response = await n8nApi.delete(`/api/v1/workflows/${id}`);
+        const response = await n8nApi.delete(`/workflows/${id}`);
         return {
           content: [{
             type: "text",

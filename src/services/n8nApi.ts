@@ -4,7 +4,7 @@ import { WorkflowSpec } from '../types/workflow';
 import { N8NWorkflowResponse } from '../types/api';
 
 const api = axios.create({
-  baseURL: `${N8N_HOST}/rest/workflows`,
+  baseURL: `${N8N_HOST}/workflows`,
   headers: {
     'Content-Type': 'application/json',
     'x-api-key': N8N_API_KEY

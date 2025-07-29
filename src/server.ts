@@ -25,7 +25,7 @@ const n8nApi = axios.create({
 // Create MCP server with modern SDK 1.17.0 API
 const server = new McpServer({
   name: "n8n-workflow-builder",
-  version: "0.10.2"
+  version: "0.10.3"
 });
 
 // Register workflow management tools using modern MCP SDK 1.17.0 API
@@ -35,7 +35,7 @@ server.tool(
   {},
   async () => {
     try {
-      const response = await n8nApi.get('/api/v1/workflows');
+      const response = await n8nApi.get('/workflows');
       return {
         content: [{
           type: "text",
@@ -68,7 +68,7 @@ server.tool(
   },
   async ({ workflow }) => {
     try {
-      const response = await n8nApi.post('/api/v1/workflows', workflow);
+      const response = await n8nApi.post('/workflows', workflow);
       return {
         content: [{
           type: "text",
@@ -95,7 +95,7 @@ server.tool(
   },
   async ({ id }) => {
     try {
-      const response = await n8nApi.get(`/api/v1/workflows/${id}`);
+      const response = await n8nApi.get(`/workflows/${id}`);
       return {
         content: [{
           type: "text",
@@ -129,7 +129,7 @@ server.tool(
   },
   async ({ id, workflow }) => {
     try {
-      const response = await n8nApi.put(`/api/v1/workflows/${id}`, workflow);
+      const response = await n8nApi.put(`/workflows/${id}`, workflow);
       return {
         content: [{
           type: "text",
@@ -156,7 +156,7 @@ server.tool(
   },
   async ({ id }) => {
     try {
-      const response = await n8nApi.delete(`/api/v1/workflows/${id}`);
+      const response = await n8nApi.delete(`/workflows/${id}`);
       return {
         content: [{
           type: "text",
@@ -187,7 +187,7 @@ server.tool(
   },
   async ({ id }) => {
     try {
-      const response = await n8nApi.post(`/api/v1/workflows/${id}/activate`);
+      const response = await n8nApi.post(`/workflows/${id}/activate`);
       return {
         content: [{
           type: "text",
@@ -218,7 +218,7 @@ server.tool(
   },
   async ({ id }) => {
     try {
-      const response = await n8nApi.post(`/api/v1/workflows/${id}/deactivate`);
+      const response = await n8nApi.post(`/workflows/${id}/deactivate`);
       return {
         content: [{
           type: "text",
@@ -249,7 +249,7 @@ server.tool(
   },
   async ({ id }) => {
     try {
-      const response = await n8nApi.post(`/api/v1/workflows/${id}/execute`);
+      const response = await n8nApi.post(`/workflows/${id}/execute`);
       return {
         content: [{
           type: "text",
@@ -287,11 +287,11 @@ server.tool(
   async ({ workflow }) => {
     try {
       // First create the workflow
-      const createResponse = await n8nApi.post('/api/v1/workflows', workflow);
+      const createResponse = await n8nApi.post('/workflows', workflow);
       const workflowId = createResponse.data.id;
 
       // Then activate it
-      const activateResponse = await n8nApi.post(`/api/v1/workflows/${workflowId}/activate`);
+      const activateResponse = await n8nApi.post(`/workflows/${workflowId}/activate`);
 
       return {
         content: [{
@@ -338,7 +338,7 @@ server.tool(
       if (limit) params.append('limit', limit.toString());
       if (cursor) params.append('cursor', cursor);
 
-      const response = await n8nApi.get(`/api/v1/executions?${params.toString()}`);
+      const response = await n8nApi.get(`/executions?${params.toString()}`);
       return {
         content: [{
           type: "text",
@@ -369,7 +369,7 @@ server.tool(
       const params = new URLSearchParams();
       if (includeData !== undefined) params.append('includeData', includeData.toString());
 
-      const url = `/api/v1/executions/${id}${params.toString() ? `?${params.toString()}` : ''}`;
+      const url = `/executions/${id}${params.toString() ? `?${params.toString()}` : ''}`;
       const response = await n8nApi.get(url);
       return {
         content: [{
@@ -397,7 +397,7 @@ server.tool(
   },
   async ({ id }) => {
     try {
-      const response = await n8nApi.delete(`/api/v1/executions/${id}`);
+      const response = await n8nApi.delete(`/executions/${id}`);
       return {
         content: [{
           type: "text",
@@ -435,7 +435,7 @@ server.tool(
       if (limit) params.append('limit', limit.toString());
       if (cursor) params.append('cursor', cursor);
 
-      const response = await n8nApi.get(`/api/v1/tags?${params.toString()}`);
+      const response = await n8nApi.get(`/tags?${params.toString()}`);
       return {
         content: [{
           type: "text",
@@ -462,7 +462,7 @@ server.tool(
   },
   async ({ name }) => {
     try {
-      const response = await n8nApi.post('/api/v1/tags', { name });
+      const response = await n8nApi.post('/tags', { name });
       return {
         content: [{
           type: "text",
@@ -493,7 +493,7 @@ server.tool(
   },
   async ({ id }) => {
     try {
-      const response = await n8nApi.get(`/api/v1/tags/${id}`);
+      const response = await n8nApi.get(`/tags/${id}`);
       return {
         content: [{
           type: "text",
@@ -525,7 +525,7 @@ server.tool(
   },
   async ({ id, name }) => {
     try {
-      const response = await n8nApi.put(`/api/v1/tags/${id}`, { name });
+      const response = await n8nApi.put(`/tags/${id}`, { name });
       return {
         content: [{
           type: "text",
@@ -556,7 +556,7 @@ server.tool(
   },
   async ({ id }) => {
     try {
-      const response = await n8nApi.delete(`/api/v1/tags/${id}`);
+      const response = await n8nApi.delete(`/tags/${id}`);
       return {
         content: [{
           type: "text",
@@ -587,7 +587,7 @@ server.tool(
   },
   async ({ workflowId }) => {
     try {
-      const response = await n8nApi.get(`/api/v1/workflows/${workflowId}/tags`);
+      const response = await n8nApi.get(`/workflows/${workflowId}/tags`);
       return {
         content: [{
           type: "text",
@@ -620,7 +620,7 @@ server.tool(
   },
   async ({ workflowId, tagIds }) => {
     try {
-      const response = await n8nApi.put(`/api/v1/workflows/${workflowId}/tags`, { tagIds });
+      const response = await n8nApi.put(`/workflows/${workflowId}/tags`, { tagIds });
       return {
         content: [{
           type: "text",
@@ -655,7 +655,7 @@ server.tool(
   },
   async ({ name, type, data }) => {
     try {
-      const response = await n8nApi.post('/api/v1/credentials', {
+      const response = await n8nApi.post('/credentials', {
         name,
         type,
         data
@@ -695,7 +695,7 @@ server.tool(
   },
   async ({ credentialType }) => {
     try {
-      const response = await n8nApi.get(`/api/v1/credentials/schema/${credentialType}`);
+      const response = await n8nApi.get(`/credentials/schema/${credentialType}`);
       return {
         content: [{
           type: "text",
@@ -727,7 +727,7 @@ server.tool(
   },
   async ({ id }) => {
     try {
-      const response = await n8nApi.delete(`/api/v1/credentials/${id}`);
+      const response = await n8nApi.delete(`/credentials/${id}`);
       return {
         content: [{
           type: "text",
@@ -773,7 +773,7 @@ server.tool(
         }
       }
 
-      const response = await n8nApi.post('/api/v1/audit', auditPayload);
+      const response = await n8nApi.post('/audit', auditPayload);
       return {
         content: [{
           type: "text",
@@ -800,7 +800,7 @@ server.tool(
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("N8N Workflow Builder MCP server v0.10.2 running on stdio");
+  console.error("N8N Workflow Builder MCP server v0.10.3 running on stdio");
   console.error("Modern SDK 1.17.0 with 23 tools: 9 workflow + 3 execution + 7 tag + 3 credential + 1 audit");
 }
 
