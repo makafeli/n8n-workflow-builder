@@ -21,7 +21,7 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
   // Create MCP server with modern SDK 1.17.0 API
   const server = new McpServer({
     name: "n8n-workflow-builder",
-    version: "0.10.1"
+    version: "0.10.2"
   });
 
   // Register workflow management tools using modern MCP SDK 1.17.0 API

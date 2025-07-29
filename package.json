@@ -1,6 +1,6 @@
 {
   "name": "@makafeli/n8n-workflow-builder",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "Model Context Protocol server for n8n workflow management",
   "main": "build/server.cjs",
   "module": "./src/index.ts",

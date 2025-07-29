@@ -25,7 +25,7 @@ const n8nApi = axios.create({
 // Create MCP server with modern SDK 1.17.0 API
 const server = new McpServer({
   name: "n8n-workflow-builder",
-  version: "0.10.1"
+  version: "0.10.2"
 });
 
 // Register workflow management tools using modern MCP SDK 1.17.0 API
@@ -800,7 +800,7 @@ server.tool(
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("N8N Workflow Builder MCP server v0.10.1 running on stdio");
+  console.error("N8N Workflow Builder MCP server v0.10.2 running on stdio");
   console.error("Modern SDK 1.17.0 with 23 tools: 9 workflow + 3 execution + 7 tag + 3 credential + 1 audit");
 }
 
