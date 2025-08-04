@@ -11,44 +11,6 @@
 <meta property="twitter:description" content="Connect AI assistants like Claude Desktop to n8n for natural language workflow automation. Create, manage, and execute workflows through conversation.">
 <meta property="twitter:image" content="https://raw.githubusercontent.com/makafeli/n8n-workflow-builder/main/.github/assets/social-preview.png">
 
-<!-- Structured Data for SEO -->
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "n8n Workflow Builder MCP Server",
-  "description": "AI assistant integration for n8n workflow automation through the Model Context Protocol (MCP). Connect Claude Desktop, ChatGPT, and other AI assistants to n8n for natural language workflow management.",
-  "url": "https://github.com/makafeli/n8n-workflow-builder",
-  "downloadUrl": "https://www.npmjs.com/package/@makafeli/n8n-workflow-builder",
-  "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "Cross-platform",
-  "programmingLanguage": "TypeScript",
-  "author": {
-    "@type": "Person",
-    "name": "makafeli",
-    "url": "https://github.com/makafeli"
-  },
-  "license": "https://github.com/makafeli/n8n-workflow-builder/blob/main/LICENSE",
-  "keywords": [
-    "n8n",
-    "MCP",
-    "AI assistant",
-    "workflow automation",
-    "Claude Desktop",
-    "ChatGPT",
-    "Model Context Protocol"
-  ],
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "softwareRequirements": "Node.js 18.0.0 or higher",
-  "releaseNotes": "https://github.com/makafeli/n8n-workflow-builder/releases",
-  "codeRepository": "https://github.com/makafeli/n8n-workflow-builder"
-}
-```
-
 **The ultimate AI assistant integration for n8n workflow automation** - Connect Claude Desktop, ChatGPT, and other AI assistants directly to your n8n instance for seamless workflow management, creation, and execution through the Model Context Protocol (MCP).
 
 <div align="center">
@@ -595,3 +557,41 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Built with ❤️ for the n8n and MCP community**
+
+<!-- Structured Data for SEO -->
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "n8n Workflow Builder MCP Server",
+  "description": "AI assistant integration for n8n workflow automation through the Model Context Protocol (MCP). Connect Claude Desktop, ChatGPT, and other AI assistants to n8n for natural language workflow management.",
+  "url": "https://github.com/makafeli/n8n-workflow-builder",
+  "downloadUrl": "https://www.npmjs.com/package/@makafeli/n8n-workflow-builder",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Cross-platform",
+  "programmingLanguage": "TypeScript",
+  "author": {
+    "@type": "Person",
+    "name": "makafeli",
+    "url": "https://github.com/makafeli"
+  },
+  "license": "https://github.com/makafeli/n8n-workflow-builder/blob/main/LICENSE",
+  "keywords": [
+    "n8n",
+    "MCP",
+    "AI assistant",
+    "workflow automation",
+    "Claude Desktop",
+    "ChatGPT",
+    "Model Context Protocol"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "softwareRequirements": "Node.js 18.0.0 or higher",
+  "releaseNotes": "https://github.com/makafeli/n8n-workflow-builder/releases",
+  "codeRepository": "https://github.com/makafeli/n8n-workflow-builder"
+}
+```
