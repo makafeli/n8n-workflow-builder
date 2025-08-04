@@ -1,0 +1,54 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Main Title -->
+  <text x="600" y="200" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+    n8n Workflow Builder MCP Server
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="260" font-family="Arial, sans-serif" font-size="24" fill="#E2E8F0" text-anchor="middle">
+    AI Assistant Integration for Workflow Automation
+  </text>
+  
+  <!-- Features -->
+  <text x="200" y="350" font-family="Arial, sans-serif" font-size="18" fill="#FF6D5A" text-anchor="middle">
+    ✨ Natural Language
+  </text>
+  <text x="600" y="350" font-family="Arial, sans-serif" font-size="18" fill="#3B82F6" text-anchor="middle">
+    🚀 Zero Configuration
+  </text>
+  <text x="1000" y="350" font-family="Arial, sans-serif" font-size="18" fill="#10B981" text-anchor="middle">
+    🆓 Free &amp; Open Source
+  </text>
+  
+  <!-- Compatibility -->
+  <text x="600" y="420" font-family="Arial, sans-serif" font-size="20" fill="#CBD5E1" text-anchor="middle">
+    Connect Claude Desktop • ChatGPT • Any MCP Client
+  </text>
+  
+  <!-- Icons/Emojis -->
+  <text x="150" y="150" font-family="Arial, sans-serif" font-size="40">🔗</text>
+  <text x="600" y="150" font-family="Arial, sans-serif" font-size="40">🤖</text>
+  <text x="1050" y="150" font-family="Arial, sans-serif" font-size="40">💬</text>
+  
+  <!-- URL -->
+  <text x="600" y="520" font-family="Arial, sans-serif" font-size="16" fill="#94A3B8" text-anchor="middle">
+    github.com/makafeli/n8n-workflow-builder
+  </text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="100" cy="500" r="3" fill="#FF6D5A" opacity="0.6"/>
+  <circle cx="1100" cy="500" r="3" fill="#3B82F6" opacity="0.6"/>
+  <circle cx="150" cy="550" r="2" fill="#10B981" opacity="0.4"/>
+  <circle cx="1050" cy="550" r="2" fill="#F59E0B" opacity="0.4"/>
+</svg>
