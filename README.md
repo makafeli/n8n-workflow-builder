@@ -12,7 +12,7 @@
 <meta property="twitter:image" content="https://raw.githubusercontent.com/makafeli/n8n-workflow-builder/main/.github/assets/social-preview.png">
 
 <!-- Structured Data for SEO -->
-<script type="application/ld+json">
+```json
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -29,7 +29,15 @@
     "url": "https://github.com/makafeli"
   },
   "license": "https://github.com/makafeli/n8n-workflow-builder/blob/main/LICENSE",
-  "keywords": ["n8n", "MCP", "AI assistant", "workflow automation", "Claude Desktop", "ChatGPT", "Model Context Protocol"],
+  "keywords": [
+    "n8n",
+    "MCP",
+    "AI assistant",
+    "workflow automation",
+    "Claude Desktop",
+    "ChatGPT",
+    "Model Context Protocol"
+  ],
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -39,7 +47,7 @@
   "releaseNotes": "https://github.com/makafeli/n8n-workflow-builder/releases",
   "codeRepository": "https://github.com/makafeli/n8n-workflow-builder"
 }
-</script>
+```
 
 **The ultimate AI assistant integration for n8n workflow automation** - Connect Claude Desktop, ChatGPT, and other AI assistants directly to your n8n instance for seamless workflow management, creation, and execution through the Model Context Protocol (MCP).
 
