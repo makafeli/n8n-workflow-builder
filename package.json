@@ -43,7 +43,23 @@
     "n8n",
     "workflow",
     "automation",
-    "server"
+    "server",
+    "ai-assistant",
+    "claude-desktop",
+    "chatgpt-integration",
+    "ai-automation",
+    "workflow-management",
+    "api-integration",
+    "no-code",
+    "low-code",
+    "typescript",
+    "nodejs",
+    "rest-api",
+    "webhook",
+    "mcp-server",
+    "workflow-builder",
+    "automation-tools",
+    "ai-integration"
   ],
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.0",
@@ -76,6 +92,15 @@
   "homepage": "https://github.com/makafeli/n8n-workflow-builder#readme",
   "author": {
     "name": "makafeli",
-    "email": "yasin@enginebit.com"
+    "email": "yasin@enginebit.com",
+    "url": "https://github.com/makafeli"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/makafeli"
+  },
+  "directories": {
+    "lib": "./build",
+    "test": "./tests"
   }
 }

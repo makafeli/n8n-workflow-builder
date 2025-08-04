@@ -112,3 +112,13 @@ Thumbs.db
 
 # Project specific
 internal-readme.md
+
+# SEO optimization temporary files
+GITHUB_TOPICS.md
+SEO_OPTIMIZATION_SUMMARY.md
+*_SEO_*.md
+
+# Platform integration planning files
+.github/PLATFORM_INTEGRATION.md
+.github/assets/social-preview-placeholder.md
+.github/ANALYTICS_SETUP.md

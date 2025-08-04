@@ -1,19 +1,123 @@
 # n8n Workflow Builder MCP Server
 
+<!-- Social Media Preview Meta Tags -->
+<meta property="og:title" content="n8n Workflow Builder MCP Server - AI Assistant Integration for n8n Automation">
+<meta property="og:description" content="Connect Claude Desktop, ChatGPT, and other AI assistants directly to your n8n instance for seamless workflow management, creation, and execution through natural language commands.">
+<meta property="og:image" content="https://raw.githubusercontent.com/makafeli/n8n-workflow-builder/main/.github/assets/social-preview.png">
+<meta property="og:url" content="https://github.com/makafeli/n8n-workflow-builder">
+<meta property="og:type" content="website">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="n8n Workflow Builder MCP Server - AI Assistant Integration">
+<meta property="twitter:description" content="Connect AI assistants like Claude Desktop to n8n for natural language workflow automation. Create, manage, and execute workflows through conversation.">
+<meta property="twitter:image" content="https://raw.githubusercontent.com/makafeli/n8n-workflow-builder/main/.github/assets/social-preview.png">
+
+<!-- Structured Data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "n8n Workflow Builder MCP Server",
+  "description": "AI assistant integration for n8n workflow automation through the Model Context Protocol (MCP). Connect Claude Desktop, ChatGPT, and other AI assistants to n8n for natural language workflow management.",
+  "url": "https://github.com/makafeli/n8n-workflow-builder",
+  "downloadUrl": "https://www.npmjs.com/package/@makafeli/n8n-workflow-builder",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Cross-platform",
+  "programmingLanguage": "TypeScript",
+  "author": {
+    "@type": "Person",
+    "name": "makafeli",
+    "url": "https://github.com/makafeli"
+  },
+  "license": "https://github.com/makafeli/n8n-workflow-builder/blob/main/LICENSE",
+  "keywords": ["n8n", "MCP", "AI assistant", "workflow automation", "Claude Desktop", "ChatGPT", "Model Context Protocol"],
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "softwareRequirements": "Node.js 18.0.0 or higher",
+  "releaseNotes": "https://github.com/makafeli/n8n-workflow-builder/releases",
+  "codeRepository": "https://github.com/makafeli/n8n-workflow-builder"
+}
+</script>
+
+**The ultimate AI assistant integration for n8n workflow automation** - Connect Claude Desktop, ChatGPT, and other AI assistants directly to your n8n instance for seamless workflow management, creation, and execution through the Model Context Protocol (MCP).
+
 <div align="center">
+
+  <!-- Primary Platform Badges -->
   <a href="https://smithery.ai/server/@makafeli/n8n-workflow-builder">
     <img src="https://smithery.ai/badge/@makafeli/n8n-workflow-builder" alt="Smithery Server Badge" />
   </a>
-  <br />
-  <a href="https://glama.ai/mcp/servers/fhoynrlnpp">
-    <img width="380" height="200" src="https://glama.ai/mcp/servers/fhoynrlnpp/badge" alt="n8n Workflow Builder Server MCP server" />
-  </a>
-  <a href="https://mseep.ai/app/makafeli-n8n-workflow-builder">
-    <img width="380" height="200" src="https://mseep.net/pr/makafeli-n8n-workflow-builder-badge.png" alt="MseeP.ai Security Assessment Badge" />
-  </a>
+
+  <!-- Package & Repository Stats -->
+  <p>
+    <a href="https://www.npmjs.com/package/@makafeli/n8n-workflow-builder">
+      <img src="https://img.shields.io/npm/v/@makafeli/n8n-workflow-builder?style=flat-square&logo=npm&color=CB3837" alt="npm version" />
+    </a>
+    <a href="https://www.npmjs.com/package/@makafeli/n8n-workflow-builder">
+      <img src="https://img.shields.io/npm/dm/@makafeli/n8n-workflow-builder?style=flat-square&logo=npm&color=CB3837" alt="npm downloads" />
+    </a>
+    <a href="https://github.com/makafeli/n8n-workflow-builder">
+      <img src="https://img.shields.io/github/stars/makafeli/n8n-workflow-builder?style=flat-square&logo=github&color=181717" alt="GitHub stars" />
+    </a>
+    <a href="https://github.com/makafeli/n8n-workflow-builder/network/members">
+      <img src="https://img.shields.io/github/forks/makafeli/n8n-workflow-builder?style=flat-square&logo=github&color=181717" alt="GitHub forks" />
+    </a>
+  </p>
+
+  <!-- Build & Quality Badges -->
+  <p>
+    <a href="https://github.com/makafeli/n8n-workflow-builder/actions">
+      <img src="https://img.shields.io/github/actions/workflow/status/makafeli/n8n-workflow-builder/ci.yml?style=flat-square&logo=github-actions&label=tests" alt="CI Status" />
+    </a>
+    <a href="https://github.com/makafeli/n8n-workflow-builder/blob/main/LICENSE">
+      <img src="https://img.shields.io/github/license/makafeli/n8n-workflow-builder?style=flat-square&color=green" alt="License" />
+    </a>
+    <a href="https://nodejs.org/">
+      <img src="https://img.shields.io/node/v/@makafeli/n8n-workflow-builder?style=flat-square&logo=node.js&color=339933" alt="Node.js version" />
+    </a>
+    <a href="https://www.typescriptlang.org/">
+      <img src="https://img.shields.io/badge/TypeScript-Ready-blue?style=flat-square&logo=typescript" alt="TypeScript" />
+    </a>
+  </p>
+
+  <!-- Platform Integration Badges -->
+  <p>
+    <a href="https://glama.ai/mcp/servers/fhoynrlnpp">
+      <img width="190" height="100" src="https://glama.ai/mcp/servers/fhoynrlnpp/badge" alt="n8n Workflow Builder Server MCP server" />
+    </a>
+    <a href="https://mseep.ai/app/makafeli-n8n-workflow-builder">
+      <img width="190" height="100" src="https://mseep.net/pr/makafeli-n8n-workflow-builder-badge.png" alt="MseeP.ai Security Assessment Badge" />
+    </a>
+  </p>
+
 </div>
 
 A powerful Model Context Protocol (MCP) server that enables AI assistants to manage n8n workflows seamlessly. Connect your AI tools directly to n8n for automated workflow creation, execution, and management.
+
+## 📚 Table of Contents
+
+- [What is this?](#-what-is-this)
+- [Key Features](#-key-features)
+- [Requirements](#-requirements)
+- [Installation & Usage](#-installation--usage)
+- [Configuration](#️-configuration)
+- [MCP Client Setup](#-mcp-client-setup)
+- [Available Tools](#️-available-tools)
+- [Usage Examples](#-usage-examples)
+- [Troubleshooting](#-troubleshooting)
+- [FAQ](#-frequently-asked-questions)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Useful Links](#-useful-links)
+
+## 📖 Additional Documentation
+
+- **[🚀 Getting Started Guide](GETTING_STARTED.md)** - Quick setup in under 5 minutes
+- **[💼 Real-World Use Cases](USE_CASES.md)** - E-commerce, data processing, API integrations, and more
+- **[🔍 Comparison with Alternatives](COMPARISON.md)** - vs Zapier, Make.com, n8n Web UI, and CLI
+- **[🔧 Comprehensive Troubleshooting](TROUBLESHOOTING.md)** - Solutions for common issues and problems
 
 ## 🎯 What is this?
 
@@ -360,6 +464,109 @@ DEBUG=n8n-workflow-builder npx @makafeli/n8n-workflow-builder
 1. Check the [GitHub Issues](https://github.com/makafeli/n8n-workflow-builder/issues)
 2. Review n8n's [API documentation](https://docs.n8n.io/api/)
 3. Verify your MCP client configuration
+
+## ❓ Frequently Asked Questions
+
+### What is an MCP Server?
+
+A **Model Context Protocol (MCP) server** is a standardized way for AI assistants to access external tools and data sources. This MCP server specifically provides AI assistants with the ability to interact with n8n workflows, enabling automated workflow management through natural language commands.
+
+### How do I connect AI assistants to n8n workflows?
+
+This MCP server acts as a bridge between AI assistants (like Claude Desktop, Cline, or ChatGPT) and your n8n instance. Simply:
+1. Install the MCP server: `npx @makafeli/n8n-workflow-builder`
+2. Configure your AI assistant's MCP settings with your n8n credentials
+3. Start using natural language to manage your n8n workflows
+
+### Which AI assistants work with this MCP server?
+
+The server works with any **MCP-compatible AI assistant**, including:
+- **Claude Desktop** (Anthropic)
+- **Cline** (VS Code extension)
+- **Continue** (VS Code extension)
+- Any custom MCP client implementation
+- Future MCP-compatible AI assistants
+
+### Can I use this with n8n Cloud or only self-hosted?
+
+This MCP server works with **both n8n Cloud and self-hosted instances**. You just need:
+- Your n8n instance URL (cloud or self-hosted)
+- A valid n8n API key with appropriate permissions
+- Network access from where you're running the MCP server
+
+### What can AI assistants do with my n8n workflows?
+
+AI assistants can perform **complete workflow management** including:
+- **List and browse** existing workflows
+- **Create new workflows** with complex node configurations
+- **Execute workflows** manually or on-demand
+- **Activate/deactivate** workflows
+- **Update and modify** existing workflows
+- **Monitor execution status** and retrieve detailed logs
+- **Manage workflow tags** and organization
+- **Generate security audits** and compliance reports
+
+### Is this secure? What permissions does it need?
+
+The MCP server uses **n8n's official API** with proper authentication:
+- Requires a valid n8n API key (you control the permissions)
+- No data is stored by the MCP server
+- All communication is direct between your AI assistant and n8n
+- Follows n8n's security model and access controls
+- You can revoke access anytime by disabling the API key
+
+### How is this different from using n8n's web interface?
+
+This MCP server enables **AI-powered workflow management**:
+- **Natural language commands** instead of clicking through UI
+- **Automated workflow creation** based on descriptions
+- **Bulk operations** across multiple workflows
+- **Integration with AI assistant workflows** and automation
+- **Voice commands** through AI assistants
+- **Contextual help** and suggestions from AI
+
+🔍 **Detailed Comparison**: See our [Comparison Guide](COMPARISON.md) for detailed comparisons with n8n Web UI, CLI, Zapier, and Make.com.
+
+### Can I automate workflow creation with AI?
+
+Yes! This is one of the key features. You can:
+- **Describe workflows in natural language** and have AI create them
+- **Generate workflows from requirements** or use cases
+- **Modify existing workflows** through conversational commands
+- **Create workflow templates** and variations automatically
+- **Batch create similar workflows** with different parameters
+
+💼 **Real Examples**: Check out our [Use Cases Guide](USE_CASES.md) for specific automation examples across different industries.
+
+### What if I encounter issues or errors?
+
+Common solutions:
+1. **Check your n8n API key** - ensure it's valid and has proper permissions
+2. **Verify n8n instance URL** - make sure it's accessible and correct
+3. **Review the troubleshooting section** above for specific error messages
+4. **Check GitHub Issues** for known problems and solutions
+5. **Enable debug mode** with `DEBUG=n8n-workflow-builder` for detailed logs
+
+🔧 **Comprehensive Help**: See our [Troubleshooting Guide](TROUBLESHOOTING.md) for detailed solutions to common issues.
+
+### How do I get started quickly?
+
+**Fastest setup:**
+1. **Use Smithery.ai hosted version** (no installation): [smithery.ai](https://smithery.ai)
+2. **Or run locally**: `npx @makafeli/n8n-workflow-builder`
+3. **Configure your AI assistant** with your n8n credentials
+4. **Start with simple commands** like "list my workflows" or "show me workflow details"
+
+📖 **Detailed Guide**: See our [Getting Started Guide](GETTING_STARTED.md) for step-by-step setup instructions.
+
+### Can I contribute or customize this MCP server?
+
+Absolutely! This is an **open-source project**:
+- **Fork the repository** for customizations
+- **Submit pull requests** for improvements
+- **Report issues** or request features on GitHub
+- **Extend functionality** by adding new MCP tools
+- **Share use cases** and examples with the community
 
 ## 🤝 Contributing
 
