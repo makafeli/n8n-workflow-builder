@@ -15,54 +15,55 @@
 
 <div align="center">
 
-  <!-- Primary Platform Badges -->
-  <a href="https://smithery.ai/server/@makafeli/n8n-workflow-builder">
-    <img src="https://smithery.ai/badge/@makafeli/n8n-workflow-builder" alt="Smithery Server Badge" />
-  </a>
+<a href="https://smithery.ai/server/@makafeli/n8n-workflow-builder">
+  <img src="https://smithery.ai/badge/@makafeli/n8n-workflow-builder" alt="Smithery Server Badge">
+</a>
 
-  <!-- Package & Repository Stats -->
-  <p>
-    <a href="https://www.npmjs.com/package/@makafeli/n8n-workflow-builder">
-      <img src="https://img.shields.io/npm/v/@makafeli/n8n-workflow-builder?style=flat-square&logo=npm&color=CB3837" alt="npm version" />
-    </a>
-    <a href="https://www.npmjs.com/package/@makafeli/n8n-workflow-builder">
-      <img src="https://img.shields.io/npm/dm/@makafeli/n8n-workflow-builder?style=flat-square&logo=npm&color=CB3837" alt="npm downloads" />
-    </a>
-    <a href="https://github.com/makafeli/n8n-workflow-builder">
-      <img src="https://img.shields.io/github/stars/makafeli/n8n-workflow-builder?style=flat-square&logo=github&color=181717" alt="GitHub stars" />
-    </a>
-    <a href="https://github.com/makafeli/n8n-workflow-builder/network/members">
-      <img src="https://img.shields.io/github/forks/makafeli/n8n-workflow-builder?style=flat-square&logo=github&color=181717" alt="GitHub forks" />
-    </a>
-  </p>
+<br><br>
 
-  <!-- Build & Quality Badges -->
-  <p>
-    <a href="https://github.com/makafeli/n8n-workflow-builder/actions">
-      <img src="https://img.shields.io/github/actions/workflow/status/makafeli/n8n-workflow-builder/ci.yml?style=flat-square&logo=github-actions&label=tests" alt="CI Status" />
-    </a>
-    <a href="https://github.com/makafeli/n8n-workflow-builder/blob/main/LICENSE">
-      <img src="https://img.shields.io/github/license/makafeli/n8n-workflow-builder?style=flat-square&color=green" alt="License" />
-    </a>
-    <a href="https://nodejs.org/">
-      <img src="https://img.shields.io/node/v/@makafeli/n8n-workflow-builder?style=flat-square&logo=node.js&color=339933" alt="Node.js version" />
-    </a>
-    <a href="https://www.typescriptlang.org/">
-      <img src="https://img.shields.io/badge/TypeScript-Ready-blue?style=flat-square&logo=typescript" alt="TypeScript" />
-    </a>
-  </p>
+<!-- Package & Repository Stats -->
+<a href="https://www.npmjs.com/package/@makafeli/n8n-workflow-builder">
+  <img src="https://img.shields.io/npm/v/@makafeli/n8n-workflow-builder?style=flat-square&logo=npm&color=CB3837" alt="npm version">
+</a>
+<a href="https://www.npmjs.com/package/@makafeli/n8n-workflow-builder">
+  <img src="https://img.shields.io/npm/dm/@makafeli/n8n-workflow-builder?style=flat-square&logo=npm&color=CB3837" alt="npm downloads">
+</a>
+<a href="https://github.com/makafeli/n8n-workflow-builder">
+  <img src="https://img.shields.io/github/stars/makafeli/n8n-workflow-builder?style=flat-square&logo=github&color=181717" alt="GitHub stars">
+</a>
+<a href="https://github.com/makafeli/n8n-workflow-builder/network/members">
+  <img src="https://img.shields.io/github/forks/makafeli/n8n-workflow-builder?style=flat-square&logo=github&color=181717" alt="GitHub forks">
+</a>
 
-  <!-- Platform Integration Badges -->
-  <p>
-    <a href="https://glama.ai/mcp/servers/fhoynrlnpp">
-      <img width="190" height="100" src="https://glama.ai/mcp/servers/fhoynrlnpp/badge" alt="n8n Workflow Builder Server MCP server" />
-    </a>
-    <a href="https://mseep.ai/app/makafeli-n8n-workflow-builder">
-      <img width="190" height="100" src="https://mseep.net/pr/makafeli-n8n-workflow-builder-badge.png" alt="MseeP.ai Security Assessment Badge" />
-    </a>
-  </p>
+<br>
+
+<!-- Build & Quality Badges -->
+<a href="https://github.com/makafeli/n8n-workflow-builder/actions">
+  <img src="https://img.shields.io/github/actions/workflow/status/makafeli/n8n-workflow-builder/ci.yml?style=flat-square&logo=github-actions&label=tests" alt="CI Status">
+</a>
+<a href="https://github.com/makafeli/n8n-workflow-builder/blob/main/LICENSE">
+  <img src="https://img.shields.io/github/license/makafeli/n8n-workflow-builder?style=flat-square&color=green" alt="License">
+</a>
+<a href="https://nodejs.org/">
+  <img src="https://img.shields.io/node/v/@makafeli/n8n-workflow-builder?style=flat-square&logo=node.js&color=339933" alt="Node.js version">
+</a>
+<a href="https://www.typescriptlang.org/">
+  <img src="https://img.shields.io/badge/TypeScript-Ready-blue?style=flat-square&logo=typescript" alt="TypeScript">
+</a>
+
+<br>
+
+<!-- Platform Integration Badges -->
+<a href="https://glama.ai/mcp/servers/fhoynrlnpp">
+  <img src="https://glama.ai/mcp/servers/fhoynrlnpp/badge" alt="n8n Workflow Builder Server MCP server" height="40">
+</a>
+&nbsp;
+<a href="https://mseep.ai/app/makafeli-n8n-workflow-builder">
+  <img src="https://mseep.net/pr/makafeli-n8n-workflow-builder-badge.png" alt="MseeP.ai Security Assessment Badge" height="40">
+</a>
 
 </div>
+
 
 A powerful Model Context Protocol (MCP) server that enables AI assistants to manage n8n workflows seamlessly. Connect your AI tools directly to n8n for automated workflow creation, execution, and management.
 
