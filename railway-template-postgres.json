@@ -1,0 +1,96 @@
+{
+  "name": "N8N Complete Stack (PostgreSQL)",
+  "description": "Complete N8N automation stack with workflow builder, PostgreSQL database, and n8n server",
+  "services": [
+    {
+      "name": "postgres",
+      "image": "postgres:15",
+      "environment": {
+        "POSTGRES_DB": "n8n",
+        "POSTGRES_USER": "n8n",
+        "POSTGRES_PASSWORD": "${POSTGRES_PASSWORD}"
+      },
+      "volumes": [
+        {
+          "path": "/var/lib/postgresql/data",
+          "size": "5GB"
+        }
+      ],
+      "healthcheck": {
+        "command": "pg_isready -U n8n -d n8n",
+        "interval": 30,
+        "timeout": 10,
+        "retries": 5
+      },
+      "ports": [5432]
+    },
+    {
+      "name": "n8n",
+      "image": "n8nio/n8n:latest",
+      "environment": {
+        "N8N_BASIC_AUTH_ACTIVE": "true",
+        "N8N_BASIC_AUTH_USER": "${N8N_ADMIN_USER}",
+        "N8N_BASIC_AUTH_PASSWORD": "${N8N_ADMIN_PASSWORD}",
+        "DB_TYPE": "postgresdb",
+        "DB_POSTGRESDB_HOST": "postgres.railway.internal",
+        "DB_POSTGRESDB_PORT": "5432",
+        "DB_POSTGRESDB_DATABASE": "n8n",
+        "DB_POSTGRESDB_USER": "n8n",
+        "DB_POSTGRESDB_PASSWORD": "${POSTGRES_PASSWORD}",
+        "N8N_HOST": "https://n8n-${RAILWAY_ENVIRONMENT_ID}.up.railway.app",
+        "N8N_PORT": "5678",
+        "N8N_PROTOCOL": "https",
+        "WEBHOOK_URL": "https://n8n-${RAILWAY_ENVIRONMENT_ID}.up.railway.app",
+        "GENERIC_TIMEZONE": "UTC"
+      },
+      "depends_on": ["postgres"],
+      "volumes": [
+        {
+          "path": "/home/node/.n8n",
+          "size": "2GB"
+        }
+      ],
+      "healthcheck": {
+        "command": "wget --no-verbose --tries=1 --spider http://localhost:5678/healthz || exit 1",
+        "interval": 30,
+        "timeout": 10,
+        "retries": 5
+      },
+      "ports": [5678]
+    },
+    {
+      "name": "workflow-builder",
+      "source": ".",
+      "environment": {
+        "USE_HTTP": "true",
+        "N8N_HOST": "https://n8n-${RAILWAY_ENVIRONMENT_ID}.up.railway.app",
+        "N8N_API_KEY": "${N8N_API_KEY}"
+      },
+      "depends_on": ["n8n"],
+      "healthcheck": {
+        "path": "/health",
+        "interval": 30,
+        "timeout": 10,
+        "retries": 5
+      }
+    }
+  ],
+  "variables": {
+    "N8N_ADMIN_USER": {
+      "description": "Admin username for n8n",
+      "default": "admin"
+    },
+    "N8N_ADMIN_PASSWORD": {
+      "description": "Admin password for n8n (minimum 8 characters)",
+      "required": true
+    },
+    "POSTGRES_PASSWORD": {
+      "description": "PostgreSQL password for n8n user",
+      "required": true
+    },
+    "N8N_API_KEY": {
+      "description": "API key for n8n (generate this in n8n UI after deployment)",
+      "required": false
+    }
+  }
+}

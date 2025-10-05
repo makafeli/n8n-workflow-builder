@@ -2,6 +2,42 @@
 
 **Comprehensive solutions for common issues when connecting AI assistants to n8n workflows.**
 
+## 🚀 Railway 502 Errors - FIXED
+
+**If you're experiencing 502 errors on Railway deployment**, this has been fixed!
+
+**Symptoms:**
+- Service starts but returns 502 Gateway errors
+- Health checks fail or timeout
+- MCP endpoints return 404 errors
+- "Application failed to respond" messages
+
+**Solution:** 
+The fix has been applied (October 1, 2025). The 404 handler was incorrectly placed before the MCP route handlers, causing all requests to return 404. This has been corrected.
+
+**What was fixed:**
+- ✅ MCP endpoints now respond correctly (not 404)
+- ✅ Health checks work immediately
+- ✅ Route ordering fixed in Express.js middleware chain
+- ✅ All 84 tests pass
+
+**To verify the fix:**
+```bash
+# Test health endpoint
+curl https://your-service.railway.app/health
+
+# Should return:
+# {"status":"healthy","service":"n8n-workflow-builder",...}
+```
+
+**If you're still seeing issues after update:**
+1. Redeploy your Railway service to get the latest code
+2. Check Railway logs for "running on port" message
+3. Verify environment variables (USE_HTTP=true, N8N_HOST, N8N_API_KEY)
+4. See [RAILWAY_502_FIX.md](./RAILWAY_502_FIX.md) for detailed information
+
+---
+
 ## 🚨 Quick Diagnostic Commands
 
 Before diving into specific issues, try these diagnostic commands with your AI assistant:

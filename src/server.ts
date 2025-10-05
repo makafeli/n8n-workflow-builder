@@ -6,12 +6,28 @@ import { z } from "zod";
 import axios from "axios";
 
 // Configuration
-const N8N_HOST = process.env.N8N_HOST || 'http://localhost:5678';
+const normalizeN8nHost = (host: string): string => {
+  if (!host) return 'http://localhost:5678';
+  
+  // Remove trailing slash
+  host = host.replace(/\/$/, '');
+  
+  // Add https:// if no protocol specified and not localhost
+  if (!host.startsWith('http://') && !host.startsWith('https://')) {
+    // Use https for production Railway deployments, http for localhost
+    const isLocalhost = host.includes('localhost') || host.includes('127.0.0.1');
+    host = isLocalhost ? `http://${host}` : `https://${host}`;
+  }
+  
+  return host;
+};
+
+const N8N_HOST = normalizeN8nHost(process.env.N8N_HOST || 'http://localhost:5678');
 const N8N_API_KEY = process.env.N8N_API_KEY || '';
 
-console.error("N8N API Configuration:");
-console.error("Host:", N8N_HOST);
-console.error("API Key:", N8N_API_KEY ? `${N8N_API_KEY.substring(0, 4)}****` : 'Not set');
+console.log("N8N API Configuration:");
+console.log("Host:", N8N_HOST);
+console.log("API Key:", N8N_API_KEY ? `${N8N_API_KEY.substring(0, 4)}****` : 'Not set');
 
 // Create axios instance for n8n API
 const n8nApi = axios.create({
@@ -800,8 +816,8 @@ server.tool(
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("N8N Workflow Builder MCP server v0.10.3 running on stdio");
-  console.error("Modern SDK 1.17.0 with 23 tools: 9 workflow + 3 execution + 7 tag + 3 credential + 1 audit");
+  console.log("N8N Workflow Builder MCP server v0.10.3 running on stdio");
+  console.log("Modern SDK 1.17.0 with 23 tools: 9 workflow + 3 execution + 7 tag + 3 credential + 1 audit");
 }
 
 main().catch((error) => {

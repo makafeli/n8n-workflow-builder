@@ -65,7 +65,7 @@ export const mockTag = {
 
 export const mockCredential = {
   id: 'test-credential-id',
-  name: 'Test Credential',
+  name: 'Test HTTP Auth',
   type: 'httpBasicAuth',
   createdAt: '2024-01-01T00:00:00.000Z',
   updatedAt: '2024-01-01T00:00:00.000Z'
@@ -134,8 +134,8 @@ export const mockN8nResponses = {
   tags: {
     list: { data: [mockTag] },
     get: { data: mockTag },
-    create: { data: { ...mockTag, id: 'new-tag-id' } },
-    update: { data: { ...mockTag, name: 'Updated Tag' } },
+    create: { data: { ...mockTag, id: 'new-tag-id', name: 'Production' } },
+    update: { data: { ...mockTag, name: 'Updated Tag Name' } },
     delete: { data: { success: true } }
   },
   credentials: {

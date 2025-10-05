@@ -4,5 +4,8 @@
         "makafeli",
         "modelcontextprotocol",
         "nodenext"
+    ],
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "main"
     ]
 }

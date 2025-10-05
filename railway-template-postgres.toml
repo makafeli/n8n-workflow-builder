@@ -1,0 +1,46 @@
+# Railway Template Configuration for PostgreSQL
+# This file is used by Railway to create one-click deployment templates with PostgreSQL
+
+name = "N8N Complete Automation Stack (PostgreSQL)"
+description = "Complete n8n automation stack with workflow builder, PostgreSQL database, and n8n server for AI assistant integration"
+
+[variables]
+N8N_ADMIN_USER = { description = "Admin username for n8n", default = "admin" }
+N8N_ADMIN_PASSWORD = { description = "Admin password for n8n (min 8 chars)", default = "" }
+POSTGRES_PASSWORD = { description = "PostgreSQL password for n8n user", default = "" }
+N8N_API_KEY = { description = "N8N API key (generate after deployment)", default = "", required = false }
+
+[services.postgres]
+source = "postgres:15"
+variables = { 
+  POSTGRES_DB = "n8n",
+  POSTGRES_USER = "n8n",
+  POSTGRES_PASSWORD = "${POSTGRES_PASSWORD}"
+}
+
+[services.n8n]
+source = "n8nio/n8n:latest"
+variables = {
+  N8N_BASIC_AUTH_ACTIVE = "true",
+  N8N_BASIC_AUTH_USER = "${N8N_ADMIN_USER}",
+  N8N_BASIC_AUTH_PASSWORD = "${N8N_ADMIN_PASSWORD}",
+  DB_TYPE = "postgresdb",
+  DB_POSTGRESDB_HOST = "${postgres.RAILWAY_PRIVATE_DOMAIN}",
+  DB_POSTGRESDB_PORT = "5432", 
+  DB_POSTGRESDB_DATABASE = "n8n",
+  DB_POSTGRESDB_USER = "n8n",
+  DB_POSTGRESDB_PASSWORD = "${POSTGRES_PASSWORD}",
+  N8N_HOST = "${RAILWAY_PUBLIC_DOMAIN}",
+  WEBHOOK_URL = "${RAILWAY_PUBLIC_DOMAIN}",
+  GENERIC_TIMEZONE = "UTC"
+}
+depends_on = ["postgres"]
+
+[services.workflow-builder]
+source = "."
+variables = {
+  USE_HTTP = "true",
+  N8N_HOST = "${n8n.RAILWAY_PUBLIC_DOMAIN}",
+  N8N_API_KEY = "${N8N_API_KEY}"
+}
+depends_on = ["n8n"]

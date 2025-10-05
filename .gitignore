@@ -122,3 +122,6 @@ SEO_OPTIMIZATION_SUMMARY.md
 .github/PLATFORM_INTEGRATION.md
 .github/assets/social-preview-placeholder.md
 .github/ANALYTICS_SETUP.md
+
+# Deprecated features (removed for simplification)
+.deprecated/

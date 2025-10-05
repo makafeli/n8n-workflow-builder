@@ -1,0 +1,17 @@
+# Nixpacks configuration for Railway deployment
+# This file is used when Railway uses Nixpacks as the builder
+
+[phases.setup]
+nixPkgs = ["nodejs-18_x"]
+
+[phases.install]
+cmds = ["npm ci --legacy-peer-deps"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
+cmd = "USE_HTTP=true node build/main.cjs"
+
+[variables]
+NODE_ENV = "production"

@@ -67,6 +67,44 @@
 
 A powerful Model Context Protocol (MCP) server that enables AI assistants to manage n8n workflows seamlessly. Connect your AI tools directly to n8n for automated workflow creation, execution, and management.
 
+## 🚀 Quick Preview
+
+**Want to see it in action?** Launch the server instantly and test it in your browser!
+
+<div align="center">
+
+[![Preview on localhost:3000](https://img.shields.io/badge/🚀_Preview-localhost:3000-blue?style=for-the-badge&logo=rocket)](http://localhost:3000)
+&nbsp;&nbsp;
+[![Preview Guide](https://img.shields.io/badge/📖_Guide-Preview_Instructions-green?style=for-the-badge&logo=book)](./PREVIEW_GUIDE.md)
+
+</div>
+
+### Quick Launch Options
+
+Choose your platform and run:
+
+```bash
+# Windows
+preview.bat
+
+# Linux/Mac
+./preview.sh
+
+# Cross-platform (Node.js)
+node preview.cjs
+```
+
+**What happens:**
+- ✅ Auto-installs dependencies if needed
+- ✅ Builds the project automatically
+- ✅ Starts HTTP server on port 3000
+- ✅ Opens your browser automatically
+- ✅ Ready to test in seconds!
+
+📖 **[Full Preview Guide →](./PREVIEW_GUIDE.md)**
+
+---
+
 ## 📚 Table of Contents
 
 - [What is this?](#-what-is-this)
@@ -75,6 +113,7 @@ A powerful Model Context Protocol (MCP) server that enables AI assistants to man
 - [Installation & Usage](#-installation--usage)
 - [Configuration](#️-configuration)
 - [MCP Client Setup](#-mcp-client-setup)
+- [Deployment Modes](#-deployment-modes)
 - [Available Tools](#️-available-tools)
 - [Usage Examples](#-usage-examples)
 - [Troubleshooting](#-troubleshooting)
@@ -89,6 +128,16 @@ A powerful Model Context Protocol (MCP) server that enables AI assistants to man
 - **[💼 Real-World Use Cases](USE_CASES.md)** - E-commerce, data processing, API integrations, and more
 - **[🔍 Comparison with Alternatives](COMPARISON.md)** - vs Zapier, Make.com, n8n Web UI, and CLI
 - **[🔧 Comprehensive Troubleshooting](TROUBLESHOOTING.md)** - Solutions for common issues and problems
+
+> **Note:** This repository has been simplified to align with the standard Railway n8n deployment pattern. Advanced features like GitHub Copilot integration have been moved to `.deprecated/` for potential reintroduction in future versions. The focus is now on providing a clean, simple deployment that matches https://railway.com/deploy/n8n.
+
+> **✅ Railway 502 Errors Fixed! (October 1, 2025)** Critical bug resolved where 404 handler was catching all MCP requests:
+> - ✅ **Fixed route ordering** - 404 handler moved to end of middleware chain
+> - ✅ **MCP endpoints now work** - No more 404 errors on /mcp requests
+> - ✅ **All 84 tests pass** - Including 6 new tests for route ordering
+> - ✅ **Ready for deployment** - Build, health checks, and endpoints all working
+> 
+> See [RAILWAY_502_FIX.md](./RAILWAY_502_FIX.md) for technical details or [DEPLOYMENT_FIX_SUMMARY.md](./DEPLOYMENT_FIX_SUMMARY.md) for all fixes.
 
 ## 🎯 What is this?
 
@@ -229,6 +278,79 @@ Add this to your Cline MCP settings:
 ### Other MCP Clients
 
 The server works with any MCP-compatible client. Use the same configuration pattern with your client's specific setup method.
+
+## 🚀 Deployment Modes
+
+The n8n-workflow-builder supports both traditional MCP stdio mode and HTTP mode for cloud deployments:
+
+### Stdio Mode (Default)
+Perfect for local AI assistants like Claude Desktop:
+```bash
+npm start
+# or
+npx @makafeli/n8n-workflow-builder
+```
+
+### HTTP Mode  
+For cloud deployments (Railway, Heroku, etc.):
+```bash
+# Explicitly enable HTTP mode
+USE_HTTP=true npm start
+
+# Or set PORT (automatically enables HTTP mode)
+PORT=1937 npm start
+```
+
+**Note:** If the configured port is already in use, the server will automatically find and use the next available port. This is logged in the console output.
+
+### Railway Deployment
+
+**🔥 Deploy Complete N8N Stack to Railway**
+
+For a complete n8n automation environment, deploy the full stack including n8n server, database, and workflow builder:
+
+**PostgreSQL Version (Recommended):**
+[![Deploy PostgreSQL Stack](https://railway.app/button.svg)](https://railway.app/new/template?template=https://raw.githubusercontent.com/Islamhassana3/n8n-workflow-builder/main/railway-template-postgres.json)
+
+**MySQL Version (Legacy):**
+[![Deploy MySQL Stack](https://railway.app/button.svg)](https://railway.app/new/template?template=https://raw.githubusercontent.com/Islamhassana3/n8n-workflow-builder/main/railway-template.json)
+
+**What you get:**
+- ✅ **N8N Server** - Full n8n instance with web UI
+- ✅ **MySQL Database** - Persistent storage for workflows and data  
+- ✅ **Workflow Builder** - This MCP server for AI integration
+- ✅ **Auto-configuration** - Services connected and ready to use
+
+📖 **[Complete Railway Deployment Guide](./RAILWAY_DEPLOY.md)**
+
+📋 **[Railway Deployment Checklist](./RAILWAY_DEPLOYMENT_CHECKLIST.md)** - Step-by-step deployment instructions
+
+🔧 **[Environment Variables Template](./RAILWAY_ENV_TEMPLATE.md)** - Exact variables needed
+
+⚠️ **[Railway 502 Fix](./RAILWAY_502_FIX.md)** - **FIXED:** Route ordering bug causing 502 errors has been resolved (October 1, 2025)
+
+**Quick Setup:**
+1. Click the deploy button above
+2. Set your admin credentials
+3. Generate N8N API key after deployment
+4. **Verify deployment**: `bash scripts/verify-deployment.sh https://your-service.railway.app`
+5. Use with Claude Desktop or other MCP clients
+
+**⚠️ Important:** Do NOT manually set the PORT environment variable on Railway - Railway manages it automatically.
+
+**Single Service Deployment:**
+If you already have n8n running elsewhere, deploy just the workflow builder:
+
+The server automatically detects Railway environment and starts in HTTP mode:
+- Health check endpoint: `/health`
+- MCP endpoint: `/mcp` 
+- Root endpoint: `/` (server info)
+
+Environment variables are automatically detected:
+- `PORT` - Server port (set by Railway)
+- `RAILWAY_ENVIRONMENT` - Triggers HTTP mode
+- `N8N_HOST` - Your n8n instance URL
+- `N8N_API_KEY` - Your n8n API key
 
 ## 🛠️ Available Tools
 

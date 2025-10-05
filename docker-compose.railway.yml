@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: n8n-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: n8n_root_password
+      MYSQL_DATABASE: n8n
+      MYSQL_USER: n8n
+      MYSQL_PASSWORD: n8n_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n-server
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=n8n_admin_password
+      - DB_TYPE=mysqldb
+      - DB_MYSQLDB_HOST=mysql
+      - DB_MYSQLDB_PORT=3306
+      - DB_MYSQLDB_DATABASE=n8n
+      - DB_MYSQLDB_USER=n8n
+      - DB_MYSQLDB_PASSWORD=n8n_password
+      - N8N_HOST=${N8N_HOST:-http://localhost:5678}
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - WEBHOOK_URL=${N8N_WEBHOOK_URL:-http://localhost:5678}
+      - GENERIC_TIMEZONE=UTC
+    ports:
+      - "5678:5678"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - n8n_data:/home/node/.n8n
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:5678/healthz || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  n8n-workflow-builder:
+    build: .
+    container_name: n8n-workflow-builder
+    environment:
+      - USE_HTTP=true
+      - PORT=1937
+      - N8N_HOST=http://n8n:5678
+      - N8N_API_KEY=${N8N_API_KEY:-}
+    ports:
+      - "1937:1937"
+    depends_on:
+      n8n:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:1937/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  mysql_data:
+  n8n_data:
