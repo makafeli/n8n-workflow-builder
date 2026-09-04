@@ -15,8 +15,8 @@
 
 <div align="center">
 
-<a href="https://smithery.ai/server/@makafeli/n8n-workflow-builder">
-  <img src="https://smithery.ai/badge/@makafeli/n8n-workflow-builder" alt="Smithery Server Badge">
+<a href="https://lightnow.ai/servers/io.github.makafeli/n8n-workflow-builder">
+  <img src="https://lightnow.ai/badge/io.github.makafeli/n8n-workflow-builder" alt="LightNow capabilities">
 </a>
 
 <br><br>
